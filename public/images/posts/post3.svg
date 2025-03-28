@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f3f4f6"/>
+  <rect x="200" y="100" width="400" height="500" fill="#ffffff" stroke="#d1d5db" stroke-width="10" rx="10" ry="10"/>
+  <rect x="250" y="150" width="300" height="50" fill="#e5e7eb" rx="5" ry="5"/>
+  <rect x="250" y="220" width="300" height="300" fill="#e5e7eb" rx="5" ry="5"/>
+  <line x1="250" y1="540" x2="550" y2="540" stroke="#d1d5db" stroke-width="5"/>
+  <line x1="250" y1="560" x2="450" y2="560" stroke="#d1d5db" stroke-width="5"/>
+  <text x="400" y="50" font-family="Arial" font-size="40" text-anchor="middle" fill="#1f2937" dominant-baseline="middle">Book Recommendation</text>
+</svg>

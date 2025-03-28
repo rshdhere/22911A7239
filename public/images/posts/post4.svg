@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#dcfce7"/>
+  <path d="M 0,500 C 100,450 200,550 300,500 C 400,450 500,550 600,500 C 700,450 800,550 800,500 L 800,600 L 0,600 Z" fill="#10b981" />
+  <circle cx="400" cy="300" r="150" fill="#f3f4f6" stroke="#10b981" stroke-width="10" />
+  <path d="M 400,200 L 400,300 L 500,300" stroke="#10b981" stroke-width="10" stroke-linecap="round" />
+  <text x="400" y="100" font-family="Arial" font-size="40" text-anchor="middle" fill="#064e3b" dominant-baseline="middle">Morning Run</text>
+</svg>

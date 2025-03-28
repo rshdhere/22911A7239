@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600" viewBox="0 0 1000 600">
+  <rect width="1000" height="600" fill="#1e293b" />
+  <text x="500" y="50" font-family="Arial" font-size="24" text-anchor="middle" fill="white">Social Analytics</text>
+  
+  <!-- Navigation -->
+  <rect x="50" y="70" width="900" height="30" fill="#334155" rx="5" ry="5" />
+  <text x="150" y="90" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Feed</text>
+  <text x="250" y="90" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Top Users</text>
+  <text x="350" y="90" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Trending</text>
+  
+  <!-- Content -->
+  <rect x="100" y="120" width="800" height="450" fill="#334155" rx="10" ry="10" />
+  <text x="150" y="150" font-family="Arial" font-size="20" fill="white">Latest Posts</text>
+  
+  <!-- Post -->
+  <rect x="150" y="170" width="700" height="300" fill="#475569" rx="5" ry="5" />
+  
+  <!-- User info -->
+  <circle cx="180" cy="200" r="20" fill="#4f46e5" />
+  <text x="180" y="205" font-family="Arial" font-size="14" text-anchor="middle" fill="white">JD</text>
+  <text x="220" y="195" font-family="Arial" font-size="14" fill="white">John Doe</text>
+  <text x="220" y="215" font-family="Arial" font-size="12" fill="#94a3b8">@johndoe</text>
+  <text x="700" y="205" font-family="Arial" font-size="10" fill="#94a3b8">3/28/2025, 8:30 AM</text>
+  
+  <!-- Post content -->
+  <text x="180" y="245" font-family="Arial" font-size="14" fill="white">Just launched my new website! Check it out and let me know what you think. #webdev #coding</text>
+  
+  <!-- Post image -->
+  <rect x="180" y="265" width="640" height="150" fill="#818cf8" rx="5" ry="5" />
+  
+  <!-- Likes and comments -->
+  <text x="200" y="440" font-family="Arial" font-size="12" fill="#94a3b8">❤️ 15 likes</text>
+  <text x="700" y="440" font-family="Arial" font-size="12" fill="#94a3b8">💬 3 comments</text>
+  
+  <!-- Comments section -->
+  <text x="180" y="470" font-family="Arial" font-size="14" fill="white">Comments</text>
+  <circle cx="180" cy="500" r="15" fill="#ec4899" />
+  <text x="180" y="504" font-family="Arial" font-size="10" text-anchor="middle" fill="white">JS</text>
+  <rect x="205" y="485" width="600" height="30" fill="#475569" rx="5" ry="5" />
+  <text x="220" y="505" font-family="Arial" font-size="12" fill="white">Looks amazing! Love the design.</text>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#fef2f2"/>
+  <circle cx="400" cy="300" r="200" fill="#ffffff" stroke="#ef4444" stroke-width="10" />
+  <path d="M 300,250 C 350,200 450,200 500,250 C 550,300 550,400 500,450 C 450,500 350,500 300,450 C 250,400 250,300 300,250 Z" fill="#fca5a5" />
+  <rect x="350" y="150" width="20" height="100" fill="#7f1d1d" rx="5" ry="5" transform="rotate(15, 350, 150)" />
+  <rect x="400" y="150" width="20" height="100" fill="#7f1d1d" rx="5" ry="5" transform="rotate(-15, 400, 150)" />
+  <text x="400" y="100" font-family="Arial" font-size="40" text-anchor="middle" fill="#7f1d1d" dominant-baseline="middle">Pasta Dish</text>
+</svg>

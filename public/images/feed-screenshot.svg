@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600" viewBox="0 0 1000 600">
+  <rect width="1000" height="600" fill="#1e293b" />
+  <text x="500" y="50" font-family="Arial" font-size="24" text-anchor="middle" fill="white">Feed Page Screenshot</text>
+  <rect x="100" y="100" width="800" height="450" fill="#334155" rx="10" ry="10" />
+  <text x="500" y="150" font-family="Arial" font-size="20" text-anchor="middle" fill="white">Latest Posts</text>
+  <circle cx="150" cy="200" r="30" fill="#4f46e5" />
+  <text x="150" y="205" font-family="Arial" font-size="16" text-anchor="middle" fill="white">JD</text>
+  <rect x="200" y="180" width="600" height="20" fill="#94a3b8" rx="5" ry="5" />
+  <rect x="200" y="210" width="400" height="20" fill="#94a3b8" rx="5" ry="5" />
+  <rect x="150" y="250" width="700" height="200" fill="#818cf8" rx="10" ry="10" />
+</svg>

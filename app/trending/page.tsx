@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 type Post = {
   id: number;
@@ -27,25 +26,24 @@ type User = {
   avatar: string;
 };
 
-export default function Feed() {
-  const [posts, setPosts] = useState<Post[]>([]);
+export default function TrendingPosts() {
+  const [trendingPosts, setTrendingPosts] = useState<Post[]>([]);
   const [users, setUsers] = useState<Record<number, User>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Fetch posts and users
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
         
-        // Fetch posts
-        const postsResponse = await fetch("/api/posts");
+        // Fetch trending posts
+        const postsResponse = await fetch("/api/trending");
         if (!postsResponse.ok) {
-          throw new Error("Failed to fetch posts");
+          throw new Error("Failed to fetch trending posts");
         }
         const postsData = await postsResponse.json();
-        setPosts(postsData);
+        setTrendingPosts(postsData);
         
         // Fetch users
         const usersResponse = await fetch("/api/users");
@@ -68,13 +66,6 @@ export default function Feed() {
     };
     
     fetchData();
-    
-    // Set up polling for real-time updates (every 30 seconds)
-    const interval = setInterval(() => {
-      fetchData();
-    }, 30000);
-    
-    return () => clearInterval(interval);
   }, []);
 
   // Format date
@@ -111,20 +102,23 @@ export default function Feed() {
   return (
     <div className="space-y-8">
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Latest Posts</h1>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Trending Posts</h1>
+        <p className="text-gray-500 dark:text-gray-400 mb-6">
+          Posts with the highest number of comments
+        </p>
         
-        {posts.length === 0 ? (
-          <p className="text-gray-500 dark:text-gray-400">No posts found.</p>
+        {trendingPosts.length === 0 ? (
+          <p className="text-gray-500 dark:text-gray-400">No trending posts found.</p>
         ) : (
-          <div className="space-y-6">
-            {posts.map((post) => {
+          <div className="space-y-8">
+            {trendingPosts.map((post) => {
               const user = users[post.userId];
               return (
-                <div key={post.id} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 shadow-sm">
+                <div key={post.id} className="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900 dark:to-purple-900 rounded-lg p-6 shadow-md border border-indigo-100 dark:border-indigo-800">
                   <div className="flex items-center mb-4">
                     {user && (
                       <>
-                        <div className="relative h-10 w-10 rounded-full overflow-hidden mr-3">
+                        <div className="relative h-12 w-12 rounded-full overflow-hidden mr-3 ring-2 ring-indigo-500">
                           <Image 
                             src={user.avatar} 
                             alt={user.name} 
@@ -133,19 +127,22 @@ export default function Feed() {
                           />
                         </div>
                         <div>
-                          <h3 className="font-medium text-gray-900 dark:text-white">{user.name}</h3>
+                          <h3 className="font-bold text-gray-900 dark:text-white text-lg">{user.name}</h3>
                           <p className="text-sm text-gray-500 dark:text-gray-400">{user.username}</p>
                         </div>
                       </>
                     )}
-                    <span className="ml-auto text-xs text-gray-500 dark:text-gray-400">
-                      {formatDate(post.timestamp)}
-                    </span>
+                    <div className="ml-auto flex items-center bg-indigo-100 dark:bg-indigo-800 px-3 py-1 rounded-full">
+                      <svg className="h-5 w-5 text-indigo-600 dark:text-indigo-300 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
+                      </svg>
+                      <span className="font-bold text-indigo-600 dark:text-indigo-300">{post.comments.length}</span>
+                    </div>
                   </div>
                   
-                  <p className="text-gray-800 dark:text-gray-200 mb-4">{post.content}</p>
+                  <p className="text-gray-800 dark:text-gray-200 mb-4 text-lg">{post.content}</p>
                   
-                  <div className="relative h-64 w-full rounded-lg overflow-hidden mb-4">
+                  <div className="relative h-80 w-full rounded-lg overflow-hidden mb-6">
                     <Image 
                       src={post.image} 
                       alt="Post image" 
@@ -154,63 +151,60 @@ export default function Feed() {
                     />
                   </div>
                   
-                  <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
-                    <div className="flex items-center">
+                  <div className="flex items-center justify-between text-sm mb-6">
+                    <div className="flex items-center text-gray-500 dark:text-gray-400">
                       <svg className="h-5 w-5 mr-1 text-red-500" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
                       </svg>
                       <span>{post.likes} likes</span>
                     </div>
                     
-                    <div className="flex items-center">
-                      <svg className="h-5 w-5 mr-1 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
-                      </svg>
-                      <span>{post.comments.length} comments</span>
-                    </div>
+                    <span className="text-gray-500 dark:text-gray-400">
+                      {formatDate(post.timestamp)}
+                    </span>
                   </div>
                   
-                  {post.comments.length > 0 && (
-                    <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
-                      <h4 className="font-medium text-gray-900 dark:text-white mb-2">Comments</h4>
-                      <div className="space-y-3">
-                        {post.comments.slice(0, 2).map((comment) => {
-                          const commentUser = users[comment.userId];
-                          return (
-                            <div key={comment.id} className="flex items-start">
-                              {commentUser && (
-                                <div className="relative h-8 w-8 rounded-full overflow-hidden mr-2">
-                                  <Image 
-                                    src={commentUser.avatar} 
-                                    alt={commentUser.name} 
-                                    fill 
-                                    className="object-cover"
-                                  />
-                                </div>
-                              )}
-                              <div className="bg-gray-100 dark:bg-gray-600 rounded-lg p-2 flex-1">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-inner">
+                    <h4 className="font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                      <svg className="h-5 w-5 mr-2 text-indigo-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
+                        <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
+                      </svg>
+                      Comments
+                    </h4>
+                    <div className="space-y-4 max-h-96 overflow-y-auto">
+                      {post.comments.map((comment) => {
+                        const commentUser = users[comment.userId];
+                        return (
+                          <div key={comment.id} className="flex items-start border-b border-gray-100 dark:border-gray-700 pb-4">
+                            {commentUser && (
+                              <div className="relative h-10 w-10 rounded-full overflow-hidden mr-3">
+                                <Image 
+                                  src={commentUser.avatar} 
+                                  alt={commentUser.name} 
+                                  fill 
+                                  className="object-cover"
+                                />
+                              </div>
+                            )}
+                            <div className="flex-1">
+                              <div className="flex items-center justify-between mb-1">
                                 {commentUser && (
                                   <span className="font-medium text-gray-900 dark:text-white">
                                     {commentUser.name}
                                   </span>
                                 )}
-                                <p className="text-sm text-gray-800 dark:text-gray-200">{comment.content}</p>
                                 <span className="text-xs text-gray-500 dark:text-gray-400">
                                   {formatDate(comment.timestamp)}
                                 </span>
                               </div>
+                              <p className="text-gray-800 dark:text-gray-200">{comment.content}</p>
                             </div>
-                          );
-                        })}
-                        
-                        {post.comments.length > 2 && (
-                          <button className="text-sm text-indigo-600 dark:text-indigo-400 hover:underline">
-                            View all {post.comments.length} comments
-                          </button>
-                        )}
-                      </div>
+                          </div>
+                        );
+                      })}
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             })}

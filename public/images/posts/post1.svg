@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#4f46e5"/>
+  <rect x="100" y="150" width="600" height="300" fill="#818cf8" rx="10" ry="10"/>
+  <rect x="150" y="200" width="500" height="50" fill="#c7d2fe" rx="5" ry="5"/>
+  <rect x="150" y="270" width="500" height="50" fill="#c7d2fe" rx="5" ry="5"/>
+  <rect x="150" y="340" width="300" height="50" fill="#c7d2fe" rx="5" ry="5"/>
+  <text x="400" y="100" font-family="Arial" font-size="40" text-anchor="middle" fill="white" dominant-baseline="middle">Website Project</text>
+</svg>
