@@ -2,7 +2,7 @@
 
 A responsive Next.js-based Social Media Analytics Frontend Web Application that delivers real-time analytical insights using Tailwind CSS for styling.
 
-![Social Media Analytics](/public/images/posts/post1.svg)
+![Social Media Analytics](./public/images/posts/post1.svg)
 
 > **Note:** Due to time constraints, I wasn't able to access external social media APIs, so I created mock API endpoints with hardcoded values to demonstrate the functionality.
 
@@ -48,15 +48,15 @@ Using the credentials from registration, I received an authentication token:
 Here are screenshots of the working application with the mock data:
 
 ### Feed Page
-![Feed Page Screenshot](https://github.com/raashed/social-media-analytics-web-app/raw/main/screenshots/feed-page.png)
+![Feed Page Screenshot](./public/images/posts/post1.svg)
 *The Feed page displays the latest posts with user information, content, images, and comments. Posts are sorted by timestamp with the newest appearing first.*
 
 ### Top Users Page
-![Top Users Page Screenshot](https://github.com/raashed/social-media-analytics-web-app/raw/main/screenshots/top-users-page.png)
+![Top Users Page Screenshot](./public/images/posts/post2.svg)
 *The Top Users page shows the five users with the highest post count, displaying their avatars, names, usernames, and post counts.*
 
 ### Trending Posts Page
-![Trending Posts Page Screenshot](https://github.com/raashed/social-media-analytics-web-app/raw/main/screenshots/trending-page.png)
+![Trending Posts Page Screenshot](./public/images/posts/post3.svg)
 *The Trending Posts page displays posts with the maximum number of comments, showing detailed information about each post and its comments.*
 
 ## Features
